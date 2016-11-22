@@ -1,0 +1,32 @@
+<html>
+<head>
+<style>
+.wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+<% users.forEach(function(user){ %>
+<div class="element">
+<table width="362" height="210" style="border:#000000 solid 1px">
+ <tbody><tr>
+  <td width="190" rowspan="4" align="center"><img style="width: 192px; height: 192px; margin-left: 10px; display: inline;" src="<%= user.icon %>"></td>
+ </tr>
+ <tr>
+  <td colspan="2" valign="middle" style="padding-left:10px; font-weight: bold;"><div><span><%= user.name %></span></div></td>
+ </tr>
+ <tr>
+  <td colspan="2" valign="top" style="padding-left:10px;"><p><span><%= user.real_name %></span></p></td>
+ </tr>
+ <tr>
+  <td align="right" style="padding:10px; height: 70px;"><img src="<%= team_icon %>" style="width: 50px;"></td>
+ </tr>
+</tbody></table>
+</div>
+<% }) %>
+
+</html>

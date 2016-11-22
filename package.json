@@ -1,0 +1,21 @@
+{
+  "name": "slack-name-card",
+  "version": "0.0.1",
+  "description": "Generate name cards from your slack team",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "export": "./export_userslist.sh && ./export_teaminfo.sh"
+  },
+  "keywords": [
+    "slack",
+    "name",
+    "card"
+  ],
+  "author": "knjcode",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0"
+  }
+}

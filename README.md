@@ -4,13 +4,15 @@ Generate name cards from your slack team.
 
 ## setup
 
+Need owner or admin permission.
+
 __Install pacakges__
 
 ```
 $ npm install
 ```
 
-__Export slack user list__
+__Export slack team info__
 
 ```
 ## Set your slack test token
@@ -19,7 +21,7 @@ $ export token=xoxp-1111111111-2222222222-3333333333-aa000a
 $ npm run export
 ```
 
-__Start server__
+__Start local server__
 
 ```
 $ npm start

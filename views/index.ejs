@@ -1,10 +1,38 @@
 <html>
 <head>
+<title><%= team_name %> slack cards</title>
 <style>
-.wrapper{
-  display: flex;
-  flex-wrap: wrap;
-}
+  .wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .card {
+    width: 345px;
+    height: 209px;
+    border: #000000 solid 1px;
+  }
+  .usericon {
+    width:       192px;
+    height:      192px;
+    margin-left: 5px;
+    display:     inline;
+  }
+  .name {
+    padding-left: 10px;
+    font-weight:  bold;
+  }
+  .realname {
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+  .team {
+    padding: 10px;
+    height:  70px;
+  }
+  .teamicon {
+    width:   50px;
+    height:  50px;
+  }
 </style>
 </head>
 <body>
@@ -12,21 +40,25 @@
 
 <% users.forEach(function(user){ %>
 <div class="element">
-<table width="345" height="209" style="border:#000000 solid 1px">
- <tbody><tr>
-  <td width="190" rowspan="4" align="center"><img style="width: 192px; height: 192px; margin-left: 10px; display: inline;" src="<%= user.icon %>"></td>
- </tr>
- <tr>
-  <td colspan="2" valign="middle" style="padding-left:10px; font-weight: bold;"><div><span><%= user.name %></span></div></td>
- </tr>
- <tr>
-  <td colspan="2" valign="top" style="padding-left:10px;"><p><span><%= user.real_name %></span></p></td>
- </tr>
- <tr>
-  <td align="right" style="padding:10px; height: 70px;"><img src="<%= team_icon %>" style="width: 50px;"></td>
- </tr>
-</tbody></table>
+  <table class="card">
+    <tbody>
+    <tr>
+      <td width="190" rowspan="4" align="center"><img class="usericon" src="<%= user.icon %>"></td>
+    </tr>
+    <tr>
+      <td colspan="2" valign="middle" class="name"><div><span><%= user.name %></span></div></td>
+    </tr>
+    <tr>
+      <td colspan="2" valign="top" class="realname"><p><span><%= user.real_name %></span></p></td>
+    </tr>
+    <tr>
+      <td align="right" class="team"><img class="teamicon" src="<%= team_icon %>"></td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 <% }) %>
 
+</div>
+</body>
 </html>

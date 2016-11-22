@@ -35,7 +35,7 @@ app.get('/:name', (req, res) => {
   })
 
   if (users.length > 0) {
-    res.render('index', { users: users, team_icon: team_icon })
+    res.render('index', { users: users, team_name: teaminfo.name, team_icon: team_icon })
   } else {
     res.status(404)
     res.send('User not found.')

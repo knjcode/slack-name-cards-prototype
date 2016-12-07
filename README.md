@@ -2,9 +2,7 @@
 
 Generate name cards from your slack team.
 
-## setup
-
-Need owner or admin permission.
+## Setup
 
 __Install pacakges__
 
@@ -12,12 +10,21 @@ __Install pacakges__
 $ npm install
 ```
 
-__Export slack team info__
+__Generate slack test token__
+
+Generate your slack test token from here [https://api.slack.com/docs/oauth-test-tokens](https://api.slack.com/docs/oauth-test-tokens).
+
+Set an environmant variable as below.
 
 ```
-## Set your slack test token
-$ export token=xoxp-1111111111-2222222222-3333333333-aa000a
-## Run export script (Require: curl command)
+$ export token="your-slack-test-token"
+```
+
+__Export slack team info__
+
+Run export script (Require: curl command)
+
+```
 $ npm run export
 ```
 
@@ -27,10 +34,11 @@ __Start local server__
 $ npm start
 ```
 
+
 ## View name cards
 
 Access local server URL with username [http://localhost:3000/slackbot](http://localhost:3000/slackbot)
 
-Multiple user names can be specified by concatenating with +
+Multiple user names can be specified by concatenating with `+`
 
-Access url [http://localhost:3000/slackbot+yourname](http://localhost:3000/slackbot+yourname)
+For example, [http://localhost:3000/slackbot+yourname](http://localhost:3000/slackbot+youruserid)

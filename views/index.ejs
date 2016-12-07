@@ -11,6 +11,9 @@
     height: 209px;
     border: #000000 solid 1px;
   }
+  .user {
+    text-align: center;
+  }
   .usericon {
     width:       192px;
     height:      192px;
@@ -19,15 +22,25 @@
   }
   .name {
     padding-left: 10px;
+    padding-right: 5px;
     font-weight:  bold;
+    vertical-align: middle;
+  }
+  .username {
+    width: 120px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .realname {
     padding-left: 10px;
     padding-right: 5px;
+    vertical-align: top;
   }
   .team {
     padding: 10px;
     height:  70px;
+    text-align: right;
   }
   .teamicon {
     width:   50px;
@@ -43,16 +56,16 @@
   <table class="card">
     <tbody>
     <tr>
-      <td width="190" rowspan="4" align="center"><img class="usericon" src="<%= user.icon %>"></td>
+      <td width="190" rowspan="4" class="user"><img class="usericon" src="<%= user.icon %>"></td>
     </tr>
     <tr>
-      <td colspan="2" valign="middle" class="name"><div><span><%= user.name %></span></div></td>
+      <td colspan="2" class="name"><div class="username"><%= user.name %></div></td>
     </tr>
     <tr>
-      <td colspan="2" valign="top" class="realname"><p><span><%= user.real_name %></span></p></td>
+      <td colspan="2" class="realname"><p><span><%= user.real_name %></span></p></td>
     </tr>
     <tr>
-      <td align="right" class="team"><img class="teamicon" src="<%= team_icon %>"></td>
+      <td class="team"><img class="teamicon" src="<%= team_icon %>"></td>
     </tr>
     </tbody>
   </table>

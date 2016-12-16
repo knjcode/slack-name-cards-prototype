@@ -2,11 +2,23 @@ const express = require('express')
 const userslist = require('./userslist.json')['members']
 const teaminfo = require('./teaminfo.json')['team']
 
-var team_icon = ''
-if (teaminfo.icon.image_original) {
-  team_icon = teaminfo.icon.image_original
-} else {
-  team_icon = teaminfo.icon.image_230
+const teamIcon = teaminfo.icon.image_original || teaminfo.icon.image_230
+const users = userslist.map((user) => {
+  return {
+    name: user.name,
+    real_name: user.real_name,
+    icon: user.profile.image_1024 || user.profile.image_512 || user.profile.image_192
+  }
+})
+
+function splitUsersArray (users, count) {
+  var usersArray = []
+  for (var i = 0; i < Math.ceil(users.length / count); i++) {
+    var j = i * count
+    var p = users.slice(j, j + count)
+    usersArray.push(p)
+  }
+  return usersArray
 }
 
 const app = express()
@@ -18,24 +30,17 @@ app.get('/', (req, res) => {
 })
 
 app.get('/:name', (req, res) => {
-  var names = req.params.name.split('+')
-  var users = []
-  userslist.forEach((user) => {
+  const names = req.params.name.split('+')
+  let selectUsers = []
+  users.forEach((user) => {
     if (names.indexOf(user.name) >= 0) {
-      var icon_url = ''
-      if (user.profile.image_1024) {
-        icon_url = user.profile.image_1024
-      } else if (user.profile.image_512) {
-        icon_url = user.profile.image_512
-      } else {
-        icon_url = user.profile.image_192
-      }
-      users.push({ name: user.name, real_name: user.real_name, icon: icon_url })
+      selectUsers.push({ name: user.name, real_name: user.real_name, icon: user.icon })
     }
   })
 
-  if (users.length > 0) {
-    res.render('index', { users: users, team_name: teaminfo.name, team_icon: team_icon })
+  if (selectUsers.length > 0) {
+    const usersArray = splitUsersArray(selectUsers, 10)
+    res.render('index', { usersArray: usersArray, team_name: teaminfo.name, team_icon: teamIcon })
   } else {
     res.status(404)
     res.send('User not found.')

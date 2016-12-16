@@ -1,78 +1,77 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title><%= team_name %> slack cards</title>
-<style>
-  .wrapper {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .card {
-    width: 345px;
-    height: 209px;
-    border: #000000 solid 1px;
-    overflow: hidden;
-  }
-  .user {
-    text-align: center;
-  }
-  .usericon {
-    width:       192px;
-    height:      192px;
-    margin-left: 5px;
-    display:     inline;
-  }
-  .name {
-    padding-left: 10px;
-    padding-right: 5px;
-    font-weight:  bold;
-    vertical-align: middle;
-  }
-  .username {
-    width: 120px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  .realname {
-    padding-left: 10px;
-    padding-right: 5px;
-    vertical-align: top;
-  }
-  .team {
-    padding: 10px;
-    height:  70px;
-    text-align: right;
-  }
-  .teamicon {
-    width:   50px;
-    height:  50px;
-  }
-</style>
-</head>
-<body>
-<div class="wrapper">
-
-<% users.forEach(function(user){ %>
-<div class="element">
-  <table class="card">
-    <tbody>
-    <tr>
-      <td width="190" rowspan="4" class="user"><img class="usericon" src="<%= user.icon %>"></td>
-    </tr>
-    <tr>
-      <td colspan="2" class="name"><div class="username"><%= user.name %></div></td>
-    </tr>
-    <tr>
-      <td colspan="2" class="realname"><p><span><%= user.real_name %></span></p></td>
-    </tr>
-    <tr>
-      <td class="team"><img class="teamicon" src="<%= team_icon %>"></td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-<% }) %>
-
-</div>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title><%= team_name %> slack cards</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato" />
+    <style>
+      body {
+        font-family: Lato;
+      }
+      .wrapper {
+        display:          flex;
+        flex-wrap:        wrap;
+        align-content:    flex-start;
+        width:            210mm;
+        height:           297mm;
+        page-break-after: always;
+      }
+      .wrapper:last-child {
+        page-break-after: auto;
+      }
+      .card {
+        width:    91mm;
+        height:   55mm;
+        border:   #000000 solid 1px;
+        overflow: hidden;
+      }
+      .usericon {
+        position:      relative;
+        width:         192px;
+        height:        192px;
+        margin-top:    8px;
+        margin-left:   8px;
+        border-radius: .2rem;
+      }
+      .username {
+        position:      absolute;
+        width:         130px;
+        margin-top:    26px;
+        margin-left:   10px;
+        font-weight:   bold;
+        white-space:   nowrap;
+        text-overflow: ellipsis;
+        overflow:      hidden;
+      }
+      .realname {
+        position:    absolute;
+        width:       128px;
+        margin-top:  72px;
+        margin-left: 10px;
+      }
+      .teamicon {
+        position:     relative;
+        width:        50px;
+        height:       50px;
+        margin-top:   80px;
+        margin-left:  82px;
+        border-radius: .25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <% usersArray.forEach((users) => { %>
+      <div class="wrapper">
+        <% users.forEach((user) => { %>
+          <div class="card">
+            <img class="usericon" src="<%= user.icon %>" />
+            <span class="username"><%= user.name %></span>
+            <span class="realname"><%= user.real_name %></span>
+            <img class="teamicon" src="<%= team_icon %>" />
+          </div>
+        <% }) %>
+      </div>
+    <% }) %>
+  </div>
+  </body>
 </html>

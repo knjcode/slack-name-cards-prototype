@@ -41,4 +41,5 @@ Access local server URL with username [http://localhost:3000/slackbot](http://lo
 
 Multiple user names can be specified by concatenating with `+`
 
-For example, [http://localhost:3000/slackbot+yourname](http://localhost:3000/slackbot+youruserid)
+For example, when you want to display 3 users: "andrew", "dave", and "steve".  
+Open the following URL [http://localhost:3000/andrew+dave+steve](http://localhost:3000/andrew+dave+steve)

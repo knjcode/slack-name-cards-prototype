@@ -1,4 +1,4 @@
-# slack-name-card
+# slack-name-cards-prototype
 
 Generate name cards from your slack team.
 

@@ -1,5 +1,5 @@
 {
-  "name": "slack-name-card",
+  "name": "slack-name-cards-prototype",
   "version": "0.0.1",
   "description": "Generate name cards from your slack team",
   "main": "index.js",
